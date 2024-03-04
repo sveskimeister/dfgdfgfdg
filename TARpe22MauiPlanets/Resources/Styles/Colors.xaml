@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="FrameBackgroundColor">#F1EFF0</Color>
+    <Color x:Key="BorderColor">Transparent</Color>
+    <Color x:Key="DarkTextColor">Black</Color>
+    <Color x:Key="ButtonBackgroundColor">Gray</Color>
+    <Color x:Key="LightTextColor">Black</Color>
+    <Color x:Key="PageBackgroundColor">#191932</Color>
+    <Color x:Key="LightBorderColor">#d5d5d5</Color>
+</ResourceDictionary>

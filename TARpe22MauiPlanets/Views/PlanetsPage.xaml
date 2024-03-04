@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TARpe22MauiPlanets.Views.PlanetsPage"
+             xmlns:models="clr-namespace:TARpe22MauiPlanets.Models"
+             Title="Maitsev Retseptikogu">
+
+    <Grid>
+
+        <!--Menu-->
+        <Grid
+            x:Name="MenuContainer">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="Black" Offset="0.0" />
+                    <GradientStop Color="Black" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="GridArea_Tapped" />
+            </Grid.GestureRecognizers>
+
+            <VerticalStackLayout
+                Margin="0,52,24,0"
+                HorizontalOptions="End"
+                Spacing="20">
+
+                <Label
+                    Text="MENU"
+                    Style="{StaticResource PageHeaderStyle}"
+                    HorizontalOptions="End" />
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+        <!--Main Content-->
+
+        <Grid
+            x:Name="MainContentGrid"
+            Padding="24,52,24,0"
+            BackgroundColor="White"
+            ColumnDefinitions="*, Auto"
+            RowDefinitions="Auto, *">
+
+            <!--Header text-->
+            <VerticalStackLayout
+                Spacing="4"
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="Center">
+
+                <Label
+                    Style="{StaticResource PageHeaderStyle}"
+                    Text="Elamuste kogumik"/>
+
+            </VerticalStackLayout>
+
+            <!--Main content scroll-->
+
+            <ScrollView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalScrollBarVisibility="Never"
+                VerticalScrollBarVisibility="Never"
+                Margin="0,32,-24,0">
+
+                <VerticalStackLayout
+                    Spacing="20">
+
+                    <!--Search Box-->
+                    <Border Padding="12,4"
+                        BackgroundColor="White"
+                        Stroke="Gray"
+                        HorizontalOptions="Fill"
+                        Margin="0,0,24,0"
+                        HeightRequest="48">
+
+                        <Border.StrokeShape>
+                            <Rectangle />
+                        </Border.StrokeShape>
+                        
+                        <Grid HorizontalOptions="Fill"
+                          VerticalOptions="Center"
+                          ColumnDefinitions="Auto,*"
+                          ColumnSpacing="20">
+                            <Image WidthRequest="18"
+                               HeightRequest="18"
+                               Source="imgsearch.png"
+                               Grid.Column="0"
+                               VerticalOptions="Center" />
+                            <Entry x:Name="searchEntry"
+                               TextChanged="SearchTextChanged"
+                               Grid.Column="1"
+                               VerticalOptions="Center"
+                               Placeholder="Otsi retsepti"
+                               TextColor="Black" />
+                        </Grid>
+                    </Border>
+
+
+
+
+                    <Label
+                        Style="{StaticResource PageHeaderStyle}"
+                        Margin="0,12,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Soolased toidud:"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <CollectionView
+                        x:Name="lstSaltyFood"
+                        HeightRequest="300"
+                        SelectionMode="Single"
+                        SelectionChanged="Planets_SelectionChanged">
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout
+                                Orientation="Horizontal"
+                                ItemSpacing="16" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="models:Planet">
+                                <Border
+                                    VerticalOptions="Fill"
+                                    WidthRequest="300"
+                                    StrokeThickness="0"
+                                    Background="{Binding Background}"
+                                    Padding="16">
+
+                                    <Border.StrokeShape>
+                                        <Rectangle />
+                                    </Border.StrokeShape>
+
+                                    <Grid
+                                        RowDefinitions="*, Auto, Auto"
+                                        RowSpacing="4">
+
+                                        <Image
+                                            Grid.Row="0"
+                                            Source="{Binding HeroImage}"
+                                            Rotation="-30"
+                                            Aspect="AspectFit"
+                                            VerticalOptions="Fill"
+                                            HorizontalOptions="Fill" />
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Style="{StaticResource AllPlanetHeaderStyle}"
+                                            Text="{Binding Name}"
+                                            Margin="0,4,0,0"/>
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label
+                        Style="{StaticResource PageHeaderStyle}"
+                        Margin="0,12,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Magustoidud:"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <CollectionView
+                        x:Name="lstDesserts"
+                        HeightRequest="300"
+                        SelectionMode="Single"
+                        SelectionChanged="Planets_SelectionChanged">
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout
+                                Orientation="Horizontal"
+                                ItemSpacing="16" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="models:Planet">
+                                <Border
+                                    VerticalOptions="Fill"
+                                    WidthRequest="300"
+                                    StrokeThickness="0"
+                                    Background="{Binding Background}"
+                                    Padding="16">
+
+                                    <Border.StrokeShape>
+                                        <Rectangle />
+                                    </Border.StrokeShape>
+
+                                    <Grid
+                                        RowDefinitions="*, Auto, Auto"
+                                        RowSpacing="4">
+
+                                        <Image
+                                            Grid.Row="0"
+                                            Source="{Binding HeroImage}"
+                                            Rotation="-30"
+                                            Aspect="AspectFit"
+                                            VerticalOptions="Fill"
+                                            HorizontalOptions="Fill"/>
+                                        <Label
+                                            Grid.Row="1"
+                                            Style="{StaticResource AllPlanetHeaderStyle}"
+                                            Text="{Binding Name}"
+                                            Margin="0,4,0,0"/>
+                                    </Grid>
+
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
